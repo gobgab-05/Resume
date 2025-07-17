@@ -1,0 +1,337 @@
+/* รีเซ็ตค่าพื้นฐานของทุก element ไม่ให้มี margin/padding แปลกๆ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* ช่วยให้จัด layout ง่ายขึ้น */
+}
+
+/* ตั้งค่าทั่วไปของหน้าเว็บ */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6; /* ระยะห่างบรรทัด */
+    color: #333;       /* สีตัวหนังสือเทาเข้ม */
+    background-color: #f5f5f5; /* พื้นหลังเทาอ่อน */
+}
+
+/* ========== MAIN CONTAINER (กรอบหลักที่แบ่งซ้ายขวา) ========== */
+.container {
+    max-width: 1200px;
+    margin: 20px auto; /* อยู่กึ่งกลางหน้าจอ */
+    background: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* เงาบางๆ */
+    border-radius: 15px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* แบ่งฝั่งซ้าย:ขวา */
+    min-height: calc(100vh - 40px);
+}
+
+/* ========== SIDEBAR (ฝั่งซ้าย) ========== */
+.sidebar {
+    background: linear-gradient(135deg, #000, #1a1a1a, #000);
+    color: white;
+    padding: 0;
+    position: relative;
+}
+
+/* ส่วนบนของ sidebar มีรูป ชื่อ ตำแหน่ง */
+.profile-section {
+    background: #1a1a1a;
+    padding: 40px 30px;
+    text-align: center;
+    margin-bottom: 30px;
+    border-radius: 0 0 25px 25px;
+}
+
+/* กรอบรูปโปรไฟล์ */
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* ทำให้รูปเป็นวงกลม */
+    border: 4px solid white;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* รูปในกรอบ */
+.profile-image .profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+}
+
+/* ชื่อภาษาไทย */
+.profile-name {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+/* ชื่อภาษาอังกฤษ */
+.profile-name-en {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+/* ตำแหน่ง หรือปีการศึกษา */
+.profile-role {
+    font-size: 16px;
+    opacity: 0.9;
+    padding: 8px 16px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/* ส่วนย่อยใน sidebar เช่น ข้อมูลติดต่อ ทักษะ ภาษา */
+.sidebar-section {
+    padding: 20px 30px;
+    margin-bottom: 25px;
+}
+
+/* หัวข้อใน sidebar */
+.sidebar-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* รายการติดต่อ (เบอร์ อีเมล) */
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+/* เวลาเอาเมาส์ไปชี้ */
+.contact-item:hover {
+    transform: translateX(5px);
+}
+
+/* ไอคอนหน้ารายการติดต่อ */
+.contact-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* รายการทักษะ */
+.skills-list {
+    list-style: none; /* เอา bullet ออก */
+}
+
+.skills-list li {
+    background: rgba(255,255,255,0.1);
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+
+.skills-list li:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateX(5px);
+}
+
+/* รายการทักษะภาษา แบ่งเป็น 2 คอลัมน์ */
+.language-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.language-item {
+    text-align: center;
+    padding: 15px 10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+
+.language-item:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+}
+
+.language-name {
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.language-level {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* ========== MAIN CONTENT (ฝั่งขวา) ========== */
+.main-content {
+    padding: 40px 50px;
+    background: rgb(88, 88, 88);
+}
+
+/* ส่วนเนื้อหาต่างๆ */
+.content-section {
+    margin-bottom: 40px;
+}
+
+/* หัวข้อแต่ละส่วน */
+.content-section h2 {
+    font-size: 26px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #000;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* เนื้อหาเกี่ยวกับตัวเอง / ความสนใจ / เป้าหมาย */
+.about-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+    text-align: justify;
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    border-left: 4px solid #000;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.about-text:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* ========== EDUCATION ========== */
+.education-item {
+    background: #f8f9fa;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border-left: 4px solid #000;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.education-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.education-level {
+    background: #000;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.education-school {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+}
+
+/* ========== RESPONSIVE (มือถือ/แท็บเล็ต) ========== */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        margin: 10px;
+        border-radius: 10px;
+    }
+
+    .sidebar {
+        order: 2; /* ให้ sidebar ลงไปอยู่ข้างล่าง */
+    }
+
+    .main-content {
+        order: 1;
+        padding: 30px 20px;
+    }
+
+    .profile-section {
+        padding: 20px;
+        border-radius: 0 0 15px 15px;
+    }
+
+    .sidebar-section {
+        padding: 15px 20px;
+    }
+
+    .content-section h2 {
+        font-size: 22px;
+    }
+
+    .language-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== ANIMATION ========= */
+.container {
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== SCROLLBAR แต่งให้สวยขึ้น (เฉพาะ Chrome, Safari) ========== */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #000;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #333;
+}
